@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emily Rhodes Knitwear | Sweaters & Commissions</title>
+  <meta name="description" content="Hand-knit patchwork sweaters inspired by quilt squares and bold colorwork. Email-only sales and commissions." />
+
+  <style>
+    :root{
+      --bg:#F5F4F2;        /* warm gallery */
+      --text:#1E1E1E;      /* near-black */
+      --muted:#6B6B6B;
+      --accent:#8800ff;    /* electric violet */
+      --accent2:#FFB000;   /* warm signal */
+      --line: rgba(30,30,30,.22);
+      --max: 1020px;
+      --pad: 18px;
+      --radius: 18px;
+      --shadow: 0 8px 22px rgba(0,0,0,.06);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a{
+      color: var(--accent);
+      font-weight: 800;
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-underline-offset: 3px;
+      text-decoration-color: color-mix(in srgb, var(--accent) 70%, transparent);
+    }
+    a:hover{opacity:.92}
+
+    /* Header: lighter, less “banner-y”, still sticky */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: color-mix(in srgb, var(--bg) 88%, white);
+      border-bottom: 2px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .nav{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px var(--pad);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 950;
+      letter-spacing:.2px;
+    }
+    .navlinks{
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .navlinks a{
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 850;
+      padding: 6px 8px;
+      border-radius: 10px;
+    }
+    .navlinks a:hover{
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      opacity:1;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 2px solid var(--text);
+      background: transparent;
+      color: var(--text);
+      font-weight: 950;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .pill:hover{opacity:.92}
+
+    main{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px var(--pad) 80px;
+    }
+
+    /* Hero: smaller + image-forward */
+    .hero{
+      padding: 10px 0 2px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      max-width: 92ch;
+    }
+    .kicker{
+      display:inline-block;
+      border: 2px solid var(--line);
+      padding: 6px 10px;
+      font-weight: 950;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      font-size: .8rem;
+      width: fit-content;
+      border-radius: 999px;
+      background: color-mix(in srgb, white 55%, transparent);
+    }
+    h1{
+      margin: 0;
+      font-size: clamp(2rem, 3.4vw, 2.8rem);
+      font-weight: 950;
+      letter-spacing: -0.02em;
+    }
+    .lede{
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 520;
+      max-width: 80ch;
+    }
+
+    /* Image banner */
+    .masthead{
+      margin-top: 14px;
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      border: 2px solid var(--line);
+      background: white;
+    }
+    .masthead-grid{
+      display:grid;
+      grid-template-columns: 1.35fr 1fr 1fr;
+      grid-template-rows: 190px 190px;
+      gap: 2px;
+      background: var(--line);
+    }
+    .masthead-grid a{display:block; height:100%; width:100%;}
+    .masthead-grid img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.05);
+    }
+    .masthead-grid .big{
+      grid-row: 1 / span 2;
+      grid-column: 1;
+    }
+
+    .note{
+      color: var(--muted);
+      font-weight: 650;
+      font-size: .95rem;
+    }
+
+    .section{
+      margin-top: 50px;
+      padding-top: 14px;
+      border-top: 4px solid var(--line);
+    }
+    .section h2{
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display:inline-block;
+      padding-bottom: 4px;
+      border-bottom: 3px solid var(--accent);
+    }
+    .section .section-lede{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 520;
+      max-width: 92ch;
+    }
+
+    .panel{
+      border: 2px solid var(--line);
+      padding: 14px;
+      margin-top: 14px;
+      border-radius: var(--radius);
+      background: color-mix(in srgb, white 70%, transparent);
+      box-shadow: var(--shadow);
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .card{
+      border: 2px solid var(--line);
+      padding: 14px;
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow);
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-weight: 950;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-weight: 520;
+    }
+    .card .meta{
+      margin-top: 10px;
+      color: var(--muted);
+      font-weight: 650;
+      font-size: .95rem;
+    }
+
+    .thumbs{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .thumbs img{
+      width:100%;
+      height: 110px;
+      object-fit: cover;
+      display:block;
+      border-radius: 14px;
+      border: 2px solid var(--line);
+    }
+
+    details{
+      margin-top: 10px;
+      border-top: 2px dashed var(--line);
+      padding-top: 10px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 900;
+      color: var(--text);
+      list-style: none;
+    }
+    summary::-webkit-details-marker{display:none;}
+    summary:before{
+      content: "＋";
+      display:inline-block;
+      width: 1.2em;
+      color: var(--accent);
+    }
+    details[open] summary:before{content:"－";}
+
+    .cta{
+      margin-top: 12px;
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-block;
+      padding: 10px 12px;
+      border: 2px solid var(--text);
+      background: transparent;
+      color: var(--text);
+      font-weight: 950;
+      text-decoration:none;
+      border-radius: 12px;
+    }
+    .btn:hover{opacity:.9}
+    .btn.secondary{
+      border-color: var(--line);
+      color: var(--muted);
+    }
+
+    .bullets{
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+    .bullets li{margin: 8px 0}
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    figure{margin:0}
+    .gallery img{
+      width:100%;
+      height: 340px;
+      object-fit: cover;
+      display:block;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    figcaption{
+      padding-top: 8px;
+      color: var(--muted);
+      font-size: .95rem;
+      font-weight: 700;
+    }
+
+    .placeholder{
+      height: 340px;
+      border: 2px dashed var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--muted);
+      font-weight: 800;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      background: color-mix(in srgb, white 65%, transparent);
+    }
+
+    /* Floating commissions button */
+    .float-cta{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      display:flex;
+      gap: 10px;
+      align-items:center;
+    }
+    .float-cta a{
+      text-decoration:none;
+    }
+    .float-btn{
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 2px solid var(--text);
+      background: white;
+      font-weight: 950;
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+    .float-btn:hover{opacity:.92}
+
+    footer{
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 2px solid var(--line);
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    @media (max-width: 720px){
+      .masthead-grid{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 180px 180px;
+      }
+      .masthead-grid .big{
+        grid-row: 1;
+        grid-column: 1 / span 2;
+      }
+      .thumbs img{height: 105px;}
+    }
+
+    @media (max-width: 520px){
+      .gallery img, .placeholder{height: 300px;}
+      .thumbs{grid-template-columns: repeat(2, 1fr);}
+      .thumbs img{height: 120px;}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="#top">Emily Rhodes Knitwear</a>
+      <nav class="navlinks" aria-label="Site navigation">
+        <a href="#available">Available</a>
+        <a href="#past">Past work</a>
+        <a href="#process">Process</a>
+        <a class="pill" href="#commissions" aria-label="Jump to commissions">Commissions ↘</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Floating, always-available commissions shortcut -->
+  <div class="float-cta" aria-label="Floating actions">
+    <a class="float-btn" href="#commissions">Commission a sweater</a>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-grid">
+        <span class="kicker">Hand-knit • Patchwork • Quilt-square inspired</span>
+        <h1>Bold knitwear, designed and made by hand.</h1>
+        <p class="lede">
+          Graphic sweaters inspired by quilt squares and color theory. Email-only ordering for available pieces and commissions.
+        </p>
+        <p class="note">
+          Tip: include your typical T-shirt size and shipping city/country in your email.
+        </p>
+      </div>
+
+      <!-- Image-forward hook -->
+      <div class="masthead" aria-label="Featured knitwear photos">
+        <div class="masthead-grid">
+          <a class="big" href="#available" aria-label="Jump to available pieces">
+            <img src="assets/images/beyond/NLSweat1.jpg" alt="Featured patchwork cardigan photo" loading="eager">
+          </a>
+          <a href="#available" aria-label="More photos of available and upcoming work">
+            <img src="assets/images/beyond/NLSweat2.jpg" alt="Patchwork cardigan back detail" loading="eager">
+          </a>
+          <a href="#available" aria-label="More photos of available and upcoming work">
+            <img src="assets/images/beyond/NLSweat3.jpg" alt="Patchwork cardigan sleeve and collar detail" loading="eager">
+          </a>
+          <a href="#available" aria-label="Warm palette work in progress">
+            <img src="assets/images/beyond/FPSweat1.jpg" alt="Warm palette patchwork detail (in progress)" loading="eager">
+          </a>
+          <a href="#available" aria-label="Warm palette work in progress">
+            <img src="assets/images/beyond/FPSweat2.jpg" alt="Warm palette patchwork detail (in progress)" loading="eager">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="available" class="section">
+      <h2>Available & Upcoming</h2>
+      <p class="section-lede">
+        I work on a small number of pieces at a time. If you’d like to claim an available sweater or join the waitlist for an upcoming one,
+        email me—first come, first served.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Quilt-Square Cardigan — Neon / Cool Palette</h3>
+          <p class="meta"><strong>Status:</strong> Available (edit this anytime)</p>
+          <p class="meta"><strong>Palette:</strong> Neon yellow, mint, charcoal, deep blues</p>
+          <p class="meta"><strong>Fit:</strong> Oversized, relaxed drape</p>
+
+          <div class="thumbs" aria-label="Photos for neon/cool cardigan">
+            <img src="assets/images/beyond/NLSweat1.jpg" alt="Neon/cool cardigan: full view" loading="lazy">
+            <img src="assets/images/beyond/NLSweat2.jpg" alt="Neon/cool cardigan: back detail" loading="lazy">
+            <img src="assets/images/beyond/NLSweat3.jpg" alt="Neon/cool cardigan: front/side detail" loading="lazy">
+          </div>
+
+          <div class="cta">
+            <a class="btn"
+               href="mailto:egrhodes96@gmail.com?subject=Purchase%20Inquiry%3A%20Neon%2FCool%20Quilt-Square%20Cardigan&body=Hi%20Emily%2C%0A%0AI%E2%80%99m%20interested%20in%20purchasing%20the%20Neon%2FCool%20Quilt-Square%20Cardigan.%0A%0AMy%20typical%20T-shirt%20size%3A%20_____%0AShipping%20city%2Fcountry%3A%20_____%0AAny%20fit%20notes%20or%20preferences%3A%20_____%0A%0AThank%20you%21">
+              Email to purchase
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Quilt-Square Cardigan — Warm Palette</h3>
+          <p class="meta"><strong>Status:</strong> In progress</p>
+          <p class="meta"><strong>Palette:</strong> Fuchsia, atomic orange, burgundy, peach</p>
+          <p class="meta"><strong>Notes:</strong> Detail photos now; full fit photos later</p>
+
+          <div class="thumbs" aria-label="Detail photos for warm palette cardigan">
+            <img src="assets/images/beyond/FPSweat1.jpg" alt="Warm palette: colorwork detail 1" loading="lazy">
+            <img src="assets/images/beyond/FPSweat2.jpg" alt="Warm palette: colorwork detail 2" loading="lazy">
+            <img src="assets/images/beyond/FPSweat3.jpg" alt="Warm palette: construction detail" loading="lazy">
+          </div>
+
+          <details>
+            <summary>Want a heads-up when it’s finished?</summary>
+            <p class="lede" style="margin-top:10px;">
+              Join the waitlist and I’ll email you when full fit photos are live.
+            </p>
+            <div class="cta" style="margin-top:10px;">
+              <a class="btn secondary"
+                 href="mailto:egrhodes96@gmail.com?subject=Waitlist%3A%20Warm%20Palette%20Quilt-Square%20Cardigan&body=Hi%20Emily%2C%0A%0AI%E2%80%99d%20love%20to%20join%20the%20waitlist%20for%20the%20Warm%20Palette%20Quilt-Square%20Cardigan.%0A%0AMy%20typical%20T-shirt%20size%3A%20_____%0AShipping%20city%2Fcountry%3A%20_____%0A%0AThank%20you%21">
+                Join waitlist
+              </a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="past" class="section">
+      <h2>Past work</h2>
+      <p class="section-lede">
+        A small gallery of finished pieces. (Add more as you make them.)
+      </p>
+
+      <div class="gallery">
+        <figure>
+          <img src="assets/images/beyond/NLSweat2.jpg" alt="Past work: patchwork cardigan back detail" loading="lazy">
+          <figcaption>Neon / Cool — quilt-square cardigan</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/images/beyond/NLSweat1.jpg" alt="Past work: patchwork cardigan full view" loading="lazy">
+          <figcaption>Neon / Cool — full view</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/images/beyond/NLSweat3.jpg" alt="Past work: patchwork cardigan collar and sleeve detail" loading="lazy">
+          <figcaption>Neon / Cool — finishing details</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="process" class="section">
+      <h2>How the sweaters are made</h2>
+      <p class="section-lede">
+        Process is part of the value: materials, design planning, and careful finishing. Here’s what goes into a patchwork cardigan.
+      </p>
+
+      <div class="panel">
+        <h3 style="margin:0 0 8px; font-weight:950;">1) Materials (soft, fluffy, lightweight)</h3>
+        <p class="lede" style="margin:0; max-width:92ch;">
+          I knit with an exceptionally soft alpaca–silk blend chosen for comfort and color. It’s gentle on the skin (non-itchy),
+          and it creates a fabric that’s fluffy and warm without feeling heavy. The yarn comes in a wide selection of vibrant hand-dyed shades,
+          which makes it possible to build palettes that are graphic, nuanced, and unique.
+        </p>
+
+        <div class="gallery">
+          <figure>
+            <div class="placeholder">Add yarn photo</div>
+            <figcaption>Skein layout or palette planning shot</figcaption>
+          </figure>
+          <figure>
+            <div class="placeholder">Add texture photo</div>
+            <figcaption>Close-up texture / stitch definition</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 style="margin:0 0 8px; font-weight:950;">2) Patchwork design (quilt-square inspired)</h3>
+        <p class="lede" style="margin:0; max-width:92ch;">
+          Each sweater is built square by square. Color placement is planned to balance contrast, rhythm, and visual weight—so the final piece feels bold but intentional.
+          Because the sweater is assembled from individually knit blocks, no two pieces are ever exactly the same.
+        </p>
+
+        <div class="gallery">
+          <figure>
+            <div class="placeholder">Add patchwork photo</div>
+            <figcaption>Squares-in-progress or layout planning</figcaption>
+          </figure>
+          <figure>
+            <div class="placeholder">Add assembly photo</div>
+            <figcaption>Seaming / finishing detail</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 style="margin:0 0 8px; font-weight:950;">3) Fit & sizing</h3>
+        <p class="lede" style="margin:0; max-width:92ch;">
+          The cardigan is designed as an oversized, relaxed fit that works across a wide range of bodies.
+          For commissions, you can share your typical T-shirt size and I’ll confirm proportions so it fits with the intended drape.
+          Sleeve and body length can be adjusted if you have preferences.
+        </p>
+      </div>
+    </section>
+
+    <section id="commissions" class="section">
+      <h2>Commissions</h2>
+      <p class="section-lede">
+        I accept a limited number of commissions at a time so I can keep the work careful and consistent.
+      </p>
+
+      <div class="panel">
+        <h3 style="margin:0 0 8px; font-weight:950;">Custom Patchwork Cardigan — $500</h3>
+        <ul class="bullets">
+          <li>One-of-a-kind quilt-square colorwork design</li>
+          <li>Oversized fit by default, with adjustable proportions</li>
+          <li>Palette chosen collaboratively</li>
+          <li>Timeline confirmed before you commit</li>
+        </ul>
+
+        <div class="cta" style="margin-top:12px;">
+          <a class="btn"
+             href="mailto:egrhodes96@gmail.com?subject=Commission%20Request%3A%20Patchwork%20Cardigan%20%28%24500%29&body=Hi%20Emily%2C%0A%0AI%E2%80%99d%20love%20to%20request%20a%20commission%20for%20a%20Patchwork%20Cardigan.%0A%0AMy%20typical%20T-shirt%20size%3A%20_____%0AColor%20ideas%2Ffeel%3A%20_____%0AFiber%20preferences%20%28if%20any%29%3A%20_____%0AShipping%20city%2Fcountry%3A%20_____%0A%0AThank%20you%21">
+            Email to request a commission
+          </a>
+          <a class="btn secondary"
+             href="mailto:egrhodes96@gmail.com?subject=Knitwear%20Idea%20Inquiry&body=Hi%20Emily%2C%0A%0AI%E2%80%99m%20interested%20in%20a%20different%20knitwear%20idea.%20Here%E2%80%99s%20what%20I%E2%80%99m%20imagining%3A%20_____%0A%0AMy%20typical%20T-shirt%20size%3A%20_____%0AShipping%20city%2Fcountry%3A%20_____%0A%0AThank%20you%21">
+            Ask about other ideas
+          </a>
+        </div>
+
+        <p class="note" style="margin-top:10px;">
+          I’ll reply with fit notes, timing, and next steps.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="panel">
+        <p class="lede" style="margin:0;">
+          Email is the easiest way to reach me:
+          <a href="mailto:egrhodes96@gmail.com?subject=Knitwear%20Inquiry">egrhodes96@gmail.com</a>
+        </p>
+        <p class="note" style="margin-top:10px;">
+          Include your typical T-shirt size and shipping city/country for the fastest response.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Emily Rhodes Knitwear</p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
