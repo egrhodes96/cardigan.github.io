@@ -145,14 +145,17 @@
 }
 
 /* Grid layout */
-.masthead-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 0;                /* no gaps */
-  width: 100%;
-  max-height: 75vh;
-  overflow: hidden;
+.masthead-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:0;
+  width:100%;
+
+  /* smaller hero */
+  height: clamp(240px, 38vh, 420px);
+  overflow:hidden;
 }
+
 
 /* Links behave like blocks, not inline */
 .masthead-grid a {
