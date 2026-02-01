@@ -33,23 +33,19 @@
 }
 
 
-.top-kicker{
-  position: sticky;
-  top: 0;
-  z-index: 5;
-
-  width: 100%;
-  padding: 8px var(--pad);
-
+.title-kicker{
+  display: inline-block;
+  width: fit-content;
+  padding: 10px 12px;
   background: var(--accent-2);
-  color: var(--ink);
-
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: var(--text);
   font-weight: 900;
-  letter-spacing: .12em;
   text-transform: uppercase;
-  font-size: .7rem;
+  letter-spacing: .12em;
+  font-size: .75rem;
+  line-height: 1;
 }
+
 
 
 *{box-sizing:border-box}
@@ -552,9 +548,7 @@ footer{
   </div>
 
   <main id="top">
-    <div class="top-kicker">
-  Hand-knit • Cloud-soft • Head-turning
-</div>
+   
 <section class="hero">
 
   <div class="hero-wrap">
@@ -563,9 +557,9 @@ footer{
       
       <h1 class="site-title">Emily Rhodes Knitwear</h1>
 
-      <p class="hero-sub">
-        Bold, chart-designed knitwear built square by square — each piece planned for color, rhythm, and texture.
-      </p>
+<div class="title-kicker" aria-label="Knitwear highlights">
+  Hand-knit • Cloud-soft • Head-turning
+</div>
     </div>
 
     <div class="masthead" aria-label="Featured knitwear photos">
