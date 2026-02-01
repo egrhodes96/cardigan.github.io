@@ -173,6 +173,19 @@
   object-position: center 35%; /* ← key line */
   display: block;
 }
+    .masthead-grid {
+  height: 340px;         /* force a crop window */
+  overflow: hidden;
+}
+
+.masthead-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20% !important; /* force visible change */
+  display: block;
+}
+
 
 /* Optional: subtle hover affordance */
 .masthead-grid a:hover img {
