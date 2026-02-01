@@ -8,22 +8,27 @@
 
   <style>
 :root{
-  /* Backgrounds */
-  --bg: #191520;          /* cool dark plum */
-  --surface: #221c2e;     /* main panels */
-  --surface-2: #2b2440;   /* emphasis blocks */
+  /* Layout scale (chart rhythm) */
+  --s1: 12px;
+  --s2: 24px;
+  --s3: 48px;
+  --pad: 16px;
+  --max: 1100px;
 
-  /* Text */
+  /* Colors */
+  --bg: #191520;
+  --surface: #221c2e;
+  --surface-2: #2b2440;
+
   --text: #f2eff8;
   --muted: #c8c2da;
 
-  /* Accents */
-  --accent: #3f2bdc;      /* deep, inky purple */
-  --accent-2: #e6ff2a;    /* vibrant yellow, slight green lean */
+  --accent: #3f2bdc;      /* deep purple */
+  --accent-2: #e6ff2a;    /* chart yellow */
 
-  /* Borders */
-  --border: #000;
+  --ink: #000;            /* bold outline color */
 }
+
 
 
 *{box-sizing:border-box}
@@ -64,7 +69,7 @@ a{
   text-decoration: none;
   font-weight: 800;
 }
-a:hover{color: var(--accent2)}
+a:hover{color: var(--accent-2)}
 
 /* Header: solid + chunky */
 header{
@@ -92,7 +97,7 @@ header{
   font-size: .95rem;
   padding: 8px 10px;
   border: 4px solid var(--ink);
-  background: var(--surface2);
+  background: var(--surface-2);
 }
 .navlinks{
   display:flex;
@@ -104,7 +109,7 @@ header{
   color: var(--text);
   padding: 10px 12px;
   border: 4px solid var(--ink);
-  background: var(--surface2);
+  background: var(--surface-2);
   text-transform: uppercase;
   letter-spacing: .06em;
   font-size: .85rem;
@@ -142,7 +147,7 @@ main{
   width: fit-content;
   padding: 8px 12px;
   border: 4px solid var(--ink);
-  background: var(--accent2);
+  background: var(--accent-2);
   color: var(--ink);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   letter-spacing:.08em;
@@ -157,14 +162,15 @@ main{
   grid-template-columns: 2fr 1fr;
   gap: 0;
   width: 100%;
-  height: clamp(200px, 30vh, 340px);
+
+  /* Taller, intentional hero */
+  min-height: clamp(420px, 55vh, 680px);
   overflow: hidden;
 
   border: 6px solid var(--ink);
-  background: var(--surface2);
+  background: var(--surface-2);
   box-shadow: 10px 10px 0 var(--accent);
 }
-.masthead-grid a{display:block; width:100%; height:100%;}
 .masthead-grid img{
   width:100%;
   height:100%;
@@ -172,6 +178,29 @@ main{
   object-position: center 28%;
   display:block;
 }
+
+.masthead-grid img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center 28%;
+  display:block;
+}
+    @media (max-width: 768px){
+  .masthead-grid{
+    grid-template-columns: 1fr;
+    min-height: 65vh;
+  }
+
+  .masthead-grid a{
+    aspect-ratio: 4 / 3;
+  }
+
+  .masthead-grid img{
+    object-position: center 22%;
+  }
+}
+
 
 /* Optional “print” texture (very subtle, no translucent panels) */
 .masthead-grid::after{
@@ -234,7 +263,7 @@ main{
   gap: var(--s2);
   margin-top: var(--s2);
 }
-.card{background: var(--surface2);}
+.card{background: var(--surface-2);}
 .card h3{
   font-size: 1.25rem;
   margin-bottom: var(--s1);
@@ -283,7 +312,7 @@ main{
   width: 54px;
   height: 54px;
   border: 6px solid var(--ink);
-  background: var(--accent2);
+  background: var(--accent-2);
   color: var(--ink);
   font-weight: 950;
   font-size: 1.9rem;
@@ -312,7 +341,7 @@ main{
   width: 14px;
   height: 14px;
   border: 4px solid var(--ink);
-  background: var(--surface2);
+  background: var(--surface-2);
   cursor: pointer;
   padding: 0;
 }
@@ -343,7 +372,7 @@ summary:before{
   content: "＋";
   display:inline-block;
   width: 1.2em;
-  color: var(--accent2);
+  color: var(--accent-2);
 }
 details[open] summary:before{content:"－";}
 
@@ -365,12 +394,12 @@ details[open] summary:before{content:"－";}
   text-transform: uppercase;
   letter-spacing: .06em;
 }
-.btn:hover{background: var(--accent2); color: var(--ink);}
+.btn:hover{background: var(--accent-2); color: var(--ink);}
 .btn.secondary{
-  background: var(--surface2);
+  background: var(--surface-2);
   color: var(--text);
 }
-.btn.secondary:hover{background: var(--accent2); color: var(--ink);}
+.btn.secondary:hover{background: var(--accent-2); color: var(--ink);}
 
 /* Lists */
 .bullets{margin: var(--s1) 0 0; padding-left: 20px;}
@@ -412,7 +441,7 @@ figcaption{
   font-weight: 900;
   letter-spacing:.08em;
   text-transform: uppercase;
-  background: var(--surface2);
+  background: var(--surface-2);
 }
 
 /* Floating commissions button: chunky label */
@@ -435,7 +464,7 @@ figcaption{
   text-transform: uppercase;
   letter-spacing: .06em;
 }
-.float-btn:hover{background: var(--accent2); color: var(--ink);}
+.float-btn:hover{background: var(--accent-2); color: var(--ink);}
 
 footer{
   margin-top: var(--s3);
