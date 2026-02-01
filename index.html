@@ -83,6 +83,20 @@ header{
   background: var(--surface);
   border-bottom: 4px solid var(--ink);
 }
+
+    .hero-title{
+  max-width: var(--max);
+  margin: var(--s2) auto var(--s1);
+  padding: 0 var(--pad);
+}
+
+.hero-title h1{
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+}
+
 .nav{
   max-width: var(--max);
   margin: 0 auto;
@@ -490,17 +504,7 @@ footer{
 </head>
 
 <body>
-  <header>
-    <div class="nav">
-      <a class="brand" href="#top">Emily Rhodes Knitwear</a>
-      <nav class="navlinks" aria-label="Site navigation">
-        <a href="#available">Available</a>
-        <a href="#process">Process</a>
-        <a class="pill" href="#commissions" aria-label="Jump to commissions">Commissions ↘</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+
 
   <!-- Floating, always-available commissions shortcut -->
   <div class="float-cta" aria-label="Floating actions">
@@ -514,7 +518,9 @@ footer{
         <h1>Bold Knitwear, Made for You.</h1>
        
       </div>
-
+<div class="hero-title">
+  <h1>Emily Rhodes Knitwear</h1>
+</div>
       <!-- Image-forward hook -->
 <section class="masthead" aria-label="Featured knitwear photos">
   <div class="masthead-grid">
