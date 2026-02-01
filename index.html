@@ -235,17 +235,18 @@ main{
   display:block;
 }
     @media (max-width: 768px){
+  /* show only the first masthead image on mobile */
+  .masthead-grid a:nth-child(2){
+    display: none;
+  }
+
+  /* ensure the first image fills the space nicely */
   .masthead-grid{
     grid-template-columns: 1fr;
-    min-height: 50vh;
   }
 
   .masthead-grid a{
-    aspect-ratio: 4 / 3;
-  }
-
-  .masthead-grid img{
-    object-position: center 22%;
+    aspect-ratio: 4 / 3;  /* or 3/4 if you want it taller */
   }
 }
 
