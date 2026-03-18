@@ -16,20 +16,20 @@
   --max: 1100px;
 
   /* Backgrounds */
-  --bg: #f1f1f3;          /* light neutral gray */
-  --surface: #d9d5e0;     /* panels */
-  --surface-2: #d9d5e0;   /* emphasis blocks */
+  --bg: #f8f5fa;          /* light neutral gray */
+  --surface: #ece1f0;     /* panels */
+  --surface-2: #edc7ed;   /* emphasis blocks */
 
   /* Text */
-  --text: #111111;
-  --muted: #444444;
+  --text:#1d0e2e;
+  --muted: #382c47;
 
   /* Accents */
- --accent: #6b2a7a;      /* warmer plum (less blue than grape) */
-  --accent-2: #f2d21b;    /* sunflower yellow (less green, more golden) */
+ --accent: #820fa8;      /* warmer plum (less blue than grape) */
+  --accent-2: #ffec1f;    /* sunflower yellow (less green, more golden) */
 
   /* Ink / borders */
-  --ink: #000000;
+  --ink: #706808;
 }
 
 
@@ -322,12 +322,7 @@ main{
     grid-template-columns: 1fr;
   }
 }
-    .card:first-child {
-  grid-column: 1 / -1;  /* spans full width */
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
+    
 .card{background: var(--surface-2);}
 .card h3{
   font-size: 1.25rem;
